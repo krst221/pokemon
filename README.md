@@ -13,6 +13,7 @@ Ordenar por stat (vida, ataque..): puedes ordenar a todos los pokémon de manera
 Si dos pokémon tienen el mismo valor para el stat elegido se mostrarán ordenados por número.
 
 Modo batalla: elige a dos pokémon para que combatan entre ellos, el segundo lo puedes cambiar tantas veces como quieras. 
+Durante la batalla se reproduce la canción de Trainer Battle de los juegos Pokémon HeartGold & SoulSilver.
 En la batalla se asume que ambos pokémon tienen nivel 100, máximos IV y EV y naturaleza neutra. 
 Se pueden elegir entre cuatro ataques:  físico (usa el ataque físico del atacante y la defensa física del defensor),especial (igual pero especial en vez de físico), recuperación (recupera el 50% de vida) y ataque arena (disminuye la precisión). 
 Se aplica efectividad de tipos igual que en las cartas. El primer pokémon que se quede sin puntos de vida pierde. 
