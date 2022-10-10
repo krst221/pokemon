@@ -18,7 +18,7 @@ const fight$$ = document.createElement('button');
 const select$$ = document.createElement('h2');
 select$$.textContent = 'Elige a los Pokémon para la batalla!';
 arena$$.appendChild(select$$);
-fight$$.addEventListener('click', () => comienzaBatalla(pokemons, poke1, poke2));(180, 225, 15)
+fight$$.addEventListener('click', () => comienzaBatalla(pokemons, poke1, poke2));
 fight$$.classList.add('botb');
 fight$$.textContent = 'BATALLA!';
 let hp = [];
@@ -359,7 +359,7 @@ function toggleSearch () {
     for (let i = 0 ; i < pokedex$$.children.length ; i++) {
         pokedex$$.children[i].style.display = 'block';
     }
-    for (let i = 1 ; i < 16 ; i = i + 2) {
+    for (let i = 1 ; i < 20 ; i = i + 2) {
         tipos$$.childNodes[i].style.filter = 'brightness(130%)';
         tipos$$.childNodes[i].style.backgroundColor = 'rgb(180, 225, 15)';
     }
