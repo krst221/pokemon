@@ -755,7 +755,7 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'fire') return 1;
         else if (tipodef === 'water') return 1;
         else if (tipodef === 'normal') return 1;
-        else if (tipodef === 'psychic') return 1;
+        else if (tipodef === 'psychic') return 2;
         else if (tipodef === 'dragon') return 1;
         else if (tipodef === 'fighting') return 2;
         else if (tipodef === 'dark') return 0.5;
