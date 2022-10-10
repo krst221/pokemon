@@ -304,7 +304,7 @@ function filtraClase (tipopasado) {
                 else {
                     pokedexStats$$.children[i].style.display = 'block';
                     img$$.style.filter = 'brightness(130%)';
-                    img$$.style.backgroundColor = 'rgb(18, 18, 83)';
+                    img$$.style.backgroundColor = 'rgb(180, 225, 15)';
                 }
             }
         }
@@ -320,7 +320,7 @@ function filtraClase (tipopasado) {
                 else {
                     pokedex$$.children[i].style.display = 'block';
                     img$$.style.filter = 'brightness(130%)';
-                    img$$.style.backgroundColor = 'rgb(18, 18, 83)';
+                    img$$.style.backgroundColor = 'rgb(180, 225, 15)';
                 }
             }
         }
@@ -352,7 +352,7 @@ function toggleSearch () {
     }
     for (let i = 1 ; i < 16 ; i = i + 2) {
         tipos$$.childNodes[i].style.filter = 'brightness(130%)';
-        tipos$$.childNodes[i].style.backgroundColor = 'rgb(18, 18, 83)';
+        tipos$$.childNodes[i].style.backgroundColor = 'rgb(180, 225, 15)';
     }
     barra$$.value = '';
     tipos$$.classList.toggle('hidden');
@@ -370,7 +370,7 @@ const toggleOrden = (num) => {
         }
         for (let i = 1 ; i < 16 ; i = i + 2) {
             tipos$$.childNodes[i].style.filter = 'brightness(130%)';
-            tipos$$.childNodes[i].style.backgroundColor = 'rgb(18, 18, 83)';
+            tipos$$.childNodes[i].style.backgroundColor = 'rgb(180, 225, 15)';
         }
     }
     else {
@@ -383,7 +383,7 @@ const toggleOrden = (num) => {
         }
         for (let i = 1 ; i < 16 ; i = i + 2) {
             tipos$$.childNodes[i].style.filter = 'brightness(130%)';
-            tipos$$.childNodes[i].style.backgroundColor = 'rgb(18, 18, 83)';
+            tipos$$.childNodes[i].style.backgroundColor = 'rgb(180, 225, 15)';
         }
     }
 }
