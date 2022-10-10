@@ -18,13 +18,14 @@ const fight$$ = document.createElement('button');
 const select$$ = document.createElement('h2');
 select$$.textContent = 'Elige a los Pokémon para la batalla!';
 arena$$.appendChild(select$$);
-fight$$.addEventListener('click', () => comienzaBatalla(pokemons, poke1, poke2));
+fight$$.addEventListener('click', () => comienzaBatalla(pokemons, poke1, poke2));(180, 225, 15)
 fight$$.classList.add('botb');
 fight$$.textContent = 'BATALLA!';
 let hp = [];
 let prec = [];
 let pokemons = [];
 let pokemonStats = [];
+let firstToggle = 0;
 let pokemonSelec = 0;
 let turno = 0;
 let lastIndex = 0;
@@ -34,7 +35,7 @@ let primerTurno = true;
 let gameOver = false;
 let ataqueAcierta = true;
 const obtienePokemons = async () => {
-    for (let i = 1; i <= 151; i++) {
+    for (let i = 1; i <= 251; i++) {
         try {
             const res = await fetch('https://pokeapi.co/api/v2/pokemon/' + i);
             pokemons[i-1] = await res.json();
@@ -44,19 +45,19 @@ const obtienePokemons = async () => {
     }
     pokemonsOrdenados = pokemons;
     pokemonStats = pokemons;
+    console.log(pokemons);
     dibujaPokemonsOrdenados(pokemons);
-    dibujaPokemonsDesordenados(pokemons);
     stats$$.classList.add('hidden');
 }
 
 const llenaBarraVida = () => {
-    for(let i = 0 ; i < 151; i++){
+    for(let i = 0 ; i < 251; i++){
         hp[i] = 1000;
     }
 }
 
 const llenaBarraPrec = () => {
-    for(let i = 0; i < 151; i++){
+    for(let i = 0; i < 251; i++){
         prec[i] = 1;
     }
 }
@@ -127,36 +128,44 @@ const dibujaFront = (pokemon, card, container) => {
 
 const asignaFondo = (name1, name2, front, card) => {
     if (name1 === 'grass' || name1 === 'bug' || name1 === 'poison') { 
-        front.style.backgroundImage = "url('./assets/img/grascard.png'), url('./assets/img/fondop.png')";
+        front.style.backgroundImage = "url('./assets/img/grascard.png'), url(https://media.giphy.com/media/zqG2gKQdrGs42MaB5u/giphy.gif)";
         card.setAttribute('data-fn', 'grass');
     }       
     else if (name1 === 'fire') {
-        front.style.backgroundImage = "url('./assets/img/firecard.png'), url('./assets/img/fondof.png')";
+        front.style.backgroundImage = "url('./assets/img/firecard.png'), url(https://media.giphy.com/media/vNzpGA4yvdxejLefpz/giphy.gif)";
         card.setAttribute('data-fn', 'fire');
     }
     else if ((name1 === 'water') || (name1 === 'ice' && name2 !== 'psychic')) {
-        front.style.backgroundImage = "url('./assets/img/watercard.png'), url('./assets/img/fondoa.png')";
+        front.style.backgroundImage = "url('./assets/img/watercard.png'), url(https://media.giphy.com/media/Kl1ywyDrt8mbe/giphy.gif)";
         card.setAttribute('data-fn', 'water');
     }
     else if (name1 === 'normal' || name1 === 'fairy') {
-        front.style.backgroundImage = "url('./assets/img/normcard.png'), url('./assets/img/fondon.png')";
+        front.style.backgroundImage = "url('./assets/img/normcard.png'), url(https://media.giphy.com/media/xT9Igm20xOYIbRLlpC/giphy.gif)";
         card.setAttribute('data-fn', 'normal');
     }
     else if (name1 === 'rock' || name1 === 'ground' || name1 === 'fighting') {
-        front.style.backgroundImage = "url('./assets/img/fightcard.png'), url('./assets/img/fondol.png')";
+        front.style.backgroundImage = "url('./assets/img/fightcard.png'), url(https://media.giphy.com/media/o4OxHgVp2dDL3LyFsC/giphy.gif)";
         card.setAttribute('data-fn', 'fighting');
     }
     else if (name1 === 'dragon') {
-        front.style.backgroundImage = "url('./assets/img/dragcard.png'), url('./assets/img/fondod.png')";
+        front.style.backgroundImage = "url('./assets/img/dragcard.png'), url(https://media.giphy.com/media/vx31WhL0M6C0jR9yfS/giphy.gif)";
         card.setAttribute('data-fn', 'dragon');
     }
     else if (name1 === 'electric') {
-        front.style.backgroundImage = "url('./assets/img/eleccard.png'), url('./assets/img/fondoe.png')";
+        front.style.backgroundImage = "url('./assets/img/eleccard.png'), url(https://media.giphy.com/media/qRY3cPYRkyQh2/giphy.gif)";
         card.setAttribute('data-fn', 'electric');
     }
-    else if (name1 === 'psychic'|| name2 === 'psychic' || name1 === 'ghost') {
-        front.style.backgroundImage = "url('./assets/img/psycard.png'), url('./assets/img/fondops.png')";
+    else if (name1 === 'psychic' || name2 === 'psychic' || name1 === 'ghost') {
+        front.style.backgroundImage = "url('./assets/img/psycard.png'), url(https://media.giphy.com/media/3ohhwFhUCOXOJfuttC/giphy.gif)";
         card.setAttribute('data-fn', 'psychic');
+    }
+    else if (name1 === 'dark' || name2 === 'dark') {
+        front.style.backgroundImage = "url('./assets/img/darkcard.png'), url(https://media.giphy.com/media/3o7buhykcIp61x20cU/giphy.gif)";
+        card.setAttribute('data-fn', 'dark');
+    }
+    else if (name1 === 'steel' || name2 === 'steel') {
+        front.style.backgroundImage = "url('./assets/img/steelcard.png'), url(https://media.giphy.com/media/3o7buaEzIwerH9zcRy/giphy.gif)";
+        card.setAttribute('data-fn', 'steel');
     }
 }
 
@@ -374,6 +383,10 @@ const toggleOrden = (num) => {
         }
     }
     else {
+        if (firstToggle === 0) {
+            dibujaPokemonsDesordenados(pokemons);
+            firstToggle++;
+        }
         stats$$.classList.remove('hidden');
         pokedex$$.classList.add('hidden');
         pokedexStats$$.classList.remove('hidden');
@@ -705,9 +718,14 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'psychic') return 1;
         else if (tipodef === 'dragon') return 0.5;
         else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 1;
+        else if (tipodef === 'steel') return 1;
         else return 1;
     }
-    else if(tipoatk === 'normal') return 1;
+    else if(tipoatk === 'normal') {
+        if (tipodef === 'steel') return 0.5;  
+        else return 1;
+    }
     else if(tipoatk === 'fire') {
         if (tipodef === 'grass') return 2;
         else if (tipodef === 'fire') return 0.5;
@@ -716,6 +734,8 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'psychic') return 1;
         else if (tipodef === 'dragon') return 0.5;
         else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 1;
+        else if (tipodef === 'steel') return 2;
         else return 1;
     }
     else if(tipoatk === 'water') {
@@ -726,6 +746,8 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'psychic') return 1;
         else if (tipodef === 'dragon') return 0.5;
         else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 1;
+        else if (tipodef === 'steel') return 0.5;
         else return 1;
     }
     else if(tipoatk === 'psychic') {
@@ -736,6 +758,8 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'psychic') return 1;
         else if (tipodef === 'dragon') return 1;
         else if (tipodef === 'fighting') return 2;
+        else if (tipodef === 'dark') return 0.5;
+        else if (tipodef === 'steel') return 0.5;
         else return 1;
     }
     else if(tipoatk === 'dragon') {
@@ -746,6 +770,8 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'psychic') return 1;
         else if (tipodef === 'dragon') return 2;
         else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 1;
+        else if (tipodef === 'steel') return 0.5;
         else return 1;
     }
     else if(tipoatk === 'electric') {
@@ -756,6 +782,8 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'psychic') return 1;
         else if (tipodef === 'dragon') return 0.5;
         else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 1;
+        else if (tipodef === 'steel') return 1;
         else return 1;
     }
     else if(tipoatk === 'fighting') {
@@ -766,6 +794,32 @@ const esEfectivo = (atk, def) => {
         else if (tipodef === 'psychic') return 0.5;
         else if (tipodef === 'dragon') return 1;
         else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 2;
+        else if (tipodef === 'steel') return 2;
+        else return 1;
+    }
+    else if(tipoatk === 'dark') {
+        if (tipodef === 'grass') return 1;
+        else if (tipodef === 'fire') return 1;
+        else if (tipodef === 'water') return 1;
+        else if (tipodef === 'normal') return 1;
+        else if (tipodef === 'psychic') return 2;
+        else if (tipodef === 'dragon') return 1;
+        else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 0.5;
+        else if (tipodef === 'steel') return 0.5;
+        else return 1;
+    }
+    else if(tipoatk === 'steel') {
+        if (tipodef === 'grass') return 1;
+        else if (tipodef === 'fire') return 1;
+        else if (tipodef === 'water') return 1;
+        else if (tipodef === 'normal') return 1;
+        else if (tipodef === 'psychic') return 1;
+        else if (tipodef === 'dragon') return 1;
+        else if (tipodef === 'fighting') return 1;
+        else if (tipodef === 'dark') return 2;
+        else if (tipodef === 'steel') return 0.5;
         else return 1;
     }
     else return 1;

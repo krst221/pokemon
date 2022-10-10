@@ -75,6 +75,7 @@ h1 {
   background-image: url("./assets/img/psycard.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position-x: center;
   border-radius: 25px;
   align-items: center;
   display: flex;
@@ -100,7 +101,7 @@ h1 {
 
 .card-subtitle {
   font-weight: 400;
-  color: rgb(70, 56, 19);
+  color: rgb(95, 80, 39);
   margin: 4% 15px 15px 15px;
   font-size: 24px;
   width: 80%;
