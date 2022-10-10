@@ -536,7 +536,7 @@ const añadeHud = (pokemons, poke1, poke2) => {
     arena$$.appendChild(img1$$);
     creaLista(pokemons, poke1);
     const imgv$$ = document.createElement('img');
-    imgv$$.src = './assets/img/vs.png'
+    imgv$$.src = './assets/img/VS.png'
     arena$$.appendChild(imgv$$);  
     creaLista(pokemons, poke2);
     arena$$.appendChild(img2$$);
