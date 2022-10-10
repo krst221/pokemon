@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Pokémon</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+        <script src="pokedex.js" defer></script>
+    </head>
+    <body>
+      <div class="main">
+        <div class="titulo"><img src="./assets/img/tit.gif"></div>
+        <div class="radios" data-fn="radiob">
+          <h3>Selecciona el tipo de búsqueda</h3><div><input type="radio" name="tipor" value="0" checked="checked" onclick="toggleSearch()"><span>Filtra por tipo</span></div><div><input type="radio" name="tipor" value="1" onclick="toggleSearch()"><span>Busca por nombre</span></div>
+        </div>
+        <div class="tipos">
+            <img src="./assets/img/elec2.png" onclick="filtraClase('electric')" id="electric">
+            <img src="./assets/img/norm2.png" onclick="filtraClase('normal')" id="normal">
+            <img src="./assets/img/fire2.png" onclick="filtraClase('fire')" id="fire">
+            <img src="./assets/img/water2.png" onclick="filtraClase('water')" id="water">
+            <img src="./assets/img/gras2.png" onclick="filtraClase('grass')" id="grass">
+            <img src="./assets/img/fight2.png" onclick="filtraClase('fighting')" id="fighting">
+            <img src="./assets/img/drag2.png" onclick="filtraClase('dragon')" id="dragon">
+            <img src="./assets/img/psy2.png" onclick="filtraClase('psychic')" id="psychic">
+        </div>
+        <div class="search hidden">
+            <span>Busca a tu Pokémon favorito</span>
+            <input type="text" oninput="buscaPokemon()" id="barra" placeholder="Pikachu">
+        </div>
+        <div class="radios" data-fn="orden">
+          <h3>Orden de los Pokémon</h3><div><input type="radio" name="orden" data-fn="ordenum" value="0" checked="checked" onclick="toggleOrden(0)"><span>Número</span></div><div><input type="radio" data-fn="ordestats" name="orden" value="1" onclick="toggleOrden(1)"><span>Stats</span></div>
+        </div>
+        <div class="radios hidden" data-fn="stats">
+          <div><input type="radio" name="statst" value="0" checked="checked" onclick="checkOrdenaPokemons(0)" checked="checked"><span>HP</span></div><div><input type="radio" name="statst" value="1" onclick="checkOrdenaPokemons(1)"><span>ATK</span></div><div><input type="radio" name="statst" value="2" onclick="checkOrdenaPokemons(2)"><span>DEF</span></div><div><input type="radio" name="statst" value="3" onclick="checkOrdenaPokemons(3)"><span>SPA</span></div><div><input type="radio" name="statst" value="4" onclick="checkOrdenaPokemons(4)"><span>SPD</span></div><div><input type="radio" name="statst" value="5" onclick="checkOrdenaPokemons(5)"><span>SPE</span></div><div><ul><li><input type="radio" name="direcc" data-fn="asc" value="5" onclick="toggleDireccion(0)"><span>Asc</span></li><li><input type="radio" name="direcc" value="5" checked="checked" data-fn="desc" onclick="toggleDireccion(1)"><span>Desc</span></li></ul></div>
+        </div>
+        <div data-fn="arena" class="arena"></div>
+        <div data-fn="pokedexo" class="pokedex"></div>
+        <div data-fn="pokedexd" class="pokedex hidden" ></div>
+      </div>
+    </body>
+</html>
